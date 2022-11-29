@@ -4,6 +4,7 @@ import '@nomicfoundation/hardhat-toolbox';
 import 'hardhat-contract-sizer';
 import 'hardhat-deploy';
 import 'hardhat-docgen';
+import '@typechain/hardhat';
 
 import {
   ENV,
@@ -18,10 +19,10 @@ const config: HardhatUserConfig = {
   solidity: {
     compilers: [
       {
-        version: '0.8.9',
+        version: '0.6.6',
         settings: {
           optimizer: {
-            enabled: true,
+            enabled: OPTIMIZER,
             runs: 200,
           },
         },
@@ -34,6 +35,7 @@ const config: HardhatUserConfig = {
   networks: {
     main: getNetworkConfig('main'),
     goerli: getNetworkConfig('goerli'),
+    bsctest: getNetworkConfig('bsctest'),
     hardhat: FORKING_NETWORK
       ? getForkNetworkConfig(FORKING_NETWORK)
       : getHardhatNetworkConfig(),

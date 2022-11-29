@@ -13,6 +13,7 @@ export const rpcUrls: ConfigPerNetwork<RpcUrl> = {
   goerli: ALCHEMY_KEY
     ? `https://eth-goerli.g.alchemy.com/v2/${ALCHEMY_KEY}`
     : `https://goerli.infura.io/v3/${INFURA_KEY}`,
+  bsctest: 'https://data-seed-prebsc-1-s3.binance.org:8545',
   hardhat: 'http://localhost:8545',
   localhost: 'http://localhost:8545',
 };
@@ -20,6 +21,7 @@ export const rpcUrls: ConfigPerNetwork<RpcUrl> = {
 export const gasPrices: ConfigPerNetwork<number | undefined> = {
   main: 1 * GWEI,
   goerli: undefined,
+  bsctest: undefined,
   hardhat: 1 * GWEI,
   localhost: 70 * GWEI,
 };
@@ -27,6 +29,7 @@ export const gasPrices: ConfigPerNetwork<number | undefined> = {
 export const chainIds: ConfigPerNetwork<number> = {
   main: 1,
   goerli: 5,
+  bsctest: 97,
   hardhat: 31337,
   localhost: 31337,
 };
@@ -34,6 +37,7 @@ export const chainIds: ConfigPerNetwork<number> = {
 export const mnemonics: ConfigPerNetwork<string | undefined> = {
   main: MNEMONIC_PROD,
   goerli: MNEMONIC_DEV,
+  bsctest: MNEMONIC_DEV,
   hardhat: MNEMONIC_DEV,
   localhost: MNEMONIC_DEV,
 };
@@ -41,6 +45,7 @@ export const mnemonics: ConfigPerNetwork<string | undefined> = {
 export const gases: ConfigPerNetwork<number | undefined> = {
   main: undefined,
   goerli: 1_250_000,
+  bsctest: 1_250_000,
   hardhat: undefined,
   localhost: 1_250_000,
 };
@@ -48,6 +53,7 @@ export const gases: ConfigPerNetwork<number | undefined> = {
 export const timeouts: ConfigPerNetwork<number | undefined> = {
   main: undefined,
   goerli: 999999,
+  bsctest: 999999,
   hardhat: undefined,
   localhost: 999999,
 };
@@ -55,6 +61,7 @@ export const timeouts: ConfigPerNetwork<number | undefined> = {
 export const blockGasLimits: ConfigPerNetwork<number | undefined> = {
   main: 300 * 10 ** 6,
   goerli: undefined,
+  bsctest: undefined,
   hardhat: 300 * 10 ** 6,
   localhost: undefined,
 };
@@ -62,6 +69,7 @@ export const blockGasLimits: ConfigPerNetwork<number | undefined> = {
 export const initialBasesFeePerGas: ConfigPerNetwork<number | undefined> = {
   main: undefined,
   goerli: undefined,
+  bsctest: undefined,
   hardhat: 0,
   localhost: undefined,
 };
@@ -97,6 +105,7 @@ export const getForkNetworkConfig = (
   saveDeployments: true,
   forking: {
     url: rpcUrls[network],
+    blockNumber: 25024449,
   },
 });
 
